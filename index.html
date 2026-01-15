@@ -1,0 +1,1810 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Vulnerability Overview — M.tech</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="sidebar" aria-label="Sidebar">
+            <div class="inner-sidebar-area">
+                <div class="top">
+                    <div class="brand">
+                        <div class="mark"><img src="assets/images/site-logo.png" alt=""></div>
+                        <div class="title">M.tech</div>
+                    </div>
+                    <button id="toggleSidebar" class="collapse-toggle" aria-label="Toggle sidebar">
+                        <i id="collapseIcon" class="chev"><img src="assets/images/sidebar.left.svg" alt=""></i>
+                    </button>
+                </div>
+
+                <div class="middle">
+                    <div class="scan-btn-area">
+                        <button class="new-scan sidebar-new-scan"><span
+                                class="material-icons">wifi_tethering</span><span class="new-scan-text">New
+                                scan</span></button>
+                    </div>
+                    <div class="inner-sidebar core-area">
+                        <h5 class="section-title">CORE</h5>
+                        <nav class="nav" id="mainNav">
+                            <div class="nav-item dashboard-tab active" data-panel="dashboardPanel">
+                                <div class="icon"><span class="material-icons">grid_view</span></div>
+                                <div class="label">Dashboard</div>
+                            </div>
+                            <div class="nav-item" data-panel="assetsPanel">
+                                <div class="icon"><span class="material-icons">dns</span></div>
+                                <div class="label">Asset Management</div>
+                            </div>
+                            <div class="nav-item sidebar-scan-tab" data-panel="scansPanel">
+                                <div class="icon"><span class="material-icons">wifi_tethering</span></div>
+                                <div class="label">Scans</div>
+                            </div>
+                            <div class="nav-item" id="openReportPanel">
+                                <div class="icon"><span class="material-symbols-outlined">draft</span></div>
+                                <div class="label">Custom Reports</div>
+                            </div>
+                            <!-- <button class="btn nav-item" id="openReportPanel" data-panel="customReport"><span class="material-symbols-outlined">draft</span>Custom Reports</button> -->
+                        </nav>
+                    </div>
+
+                    <div class="inner-sidebar inteligence-area">
+                        <h5 class="section-title">INTELLIGENCE</h5>
+                        <nav class="nav">
+                            <div class="nav-item" data-panel="threatPanel">
+                                <div class="icon"><span class="material-icons">bug_report</span></div>
+                                <div class="label">Threat Intelligence</div>
+                            </div>
+                            <div class="nav-item" data-panel="brandPanel">
+                                <div class="icon"><span class="material-icons">visibility</span></div>
+                                <div class="label">Brand Protection</div>
+                            </div>
+                            <div class="nav-item" data-panel="compliancePanel">
+                                <div class="icon"><span class="material-symbols-outlined">key_vertical</span></div>
+                                <div class="label">Compliance</div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom">
+                <div class="ai-card">
+                    <div class="ai-card-top">
+                        <img src="assets/images/headset.svg" alt="">
+                        <h4>AI Expert</h4>
+                    </div>
+                    <p>Helps you interpret vulnerability reports, prioritize risks and guide remediation.</p>
+                    <button class="btn nav-item" id="openAi" data-panel="aiAgent">Chat with AI Agent</button>
+                </div>
+                <div class="footer-links">
+                    <a class="item nav-item pricingMenu" data-panel="pricingPanel"><span class="material-icons">attach_money</span>
+                        <p>Pricing Billing</p>
+                    </a>
+                    <a class="item nav-item settingMenu" data-panel="settingPanel"><span class="material-icons">settings</span>
+                        <p>Setting</p>
+                    </a>
+                    <a class="item"><span class="material-icons">logout</span>
+                        <p>Logout</p>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main" id="main">
+            <header class="header">
+                <div class="title">
+                    <h1 id="pageTitle">Vulnerability Overview</h1>
+                    <span class="breadcrumbs">Home / <span class="current-page" id="currentPage">Reports</span></span>
+                </div>
+                <div class="user">
+                    <div class="avatar">
+                        <img src="assets/images/user-avatar.jpg" alt="avatar">
+                    </div>
+                    <div class="user-info">
+                        <h3>Welcome, Mitch 👋</h3>
+                        <span>Today you are in Canada</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- DASHBOARD PANEL -->
+            <section id="dashboardPanel" class="panel active">
+                <div class="cards">
+                    <div class="card scan-card">
+                        <div class="card-body">
+                            <div class="card-content">
+                                <h5>Total Scans</h5>
+                                <div class="value">4</div>
+                            </div>
+                            <div class="card-chart">
+                                <div class="mini-wrapper"><canvas id="mini1"></canvas></div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="icon-box">
+                                <img src="assets/images/arrowshape.up.circle.fill-blue.svg" alt="">
+                                <div class="icon-box-text">
+                                    <p><span>71.2%</span>than last month</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card active-threat-card">
+                        <div class="card-body">
+                            <div class="card-content">
+                                <h5>Active Threats</h5>
+                                <div class="value">23</div>
+                            </div>
+                            <div class="card-chart">
+                                <div class="mini-wrapper"><canvas id="mini2"></canvas></div>
+                            </div>
+                        </div>
+
+
+                        <div class="card-footer">
+                            <div class="icon-box">
+                                <img src="assets/images/arrowshape.up.circle.fill.svg" alt="">
+                                <div class="icon-box-text">
+                                    <p><span>4.5%</span>than last month</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card compliance-score-card">
+                        <div class="card-body">
+                            <div class="card-content">
+                                <h5>Compliance Score</h5>
+                                <div class="value">90.7%</div>
+                            </div>
+                            <div class="card-chart">
+                                <div class="mini-wrapper"><canvas id="mini3"></canvas></div>
+                            </div>
+                        </div>
+
+
+                        <div class="card-footer">
+                            <div class="icon-box">
+                                <img src="assets/images/arrowshape.up.circle.fill-blue.svg" alt="">
+                                <div class="icon-box-text">
+                                    <p><span>4.5%</span>than last month</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card brand-risks-card">
+                        <div class="card-body">
+                            <div class="card-content">
+                                <h5>Brand Risks</h5>
+                                <div class="value">4</div>
+                            </div>
+                            <div class="card-chart">
+                                <div class="mini-wrapper"><canvas id="mini4"></canvas></div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="icon-box">
+                                <img src="assets/images/arrowshape.up.circle.fill.svg" alt="">
+                                <div class="icon-box-text">
+                                    <p><span>4.5%</span>More Domains flagged</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row main-chart-area" style="margin-top:14px">
+                    <div class="trend">
+                        <div class="trend-head">
+                            <div class="treand-title">
+                                <h3><img src="assets/images/Vector (13).svg" alt="">Vulnerability Trend</h3>
+
+                            </div>
+                            <div class="button-area">
+                                <button><img src="assets/images/_Button.svg" alt=""></button>
+                            </div>
+                        </div>
+                        <div class="trend-tab-area">
+                            <span>How the trend is going</span>
+                            <div class="tabs">
+                                <button class="tab btn-ghost active" id="trendWeek" data-range="week">Week</button>
+                                <button class="tab btn-ghost" id="trendMonth" data-range="month">Month</button>
+                                <button class="tab btn-ghost" id="trendYear" data-range="year">Year</button>
+                            </div>
+                        </div>
+                        <div class="vuln-chart-container">
+                            <canvas id="vulnChart"></canvas>
+                        </div>
+                    </div>
+
+                    <aside class="promo">
+                        <div class="inner-promo">
+                            <img src="assets/images/Logo (1).png" alt="">
+                            <h3>Get started with your first scan for free!</h3>
+                            <button class="promo-btn" style="margin-top:12px">Get my voucher</button>
+                        </div>
+                    </aside>
+                </div>
+
+
+                <div class="recent" style="margin-top:30px">
+                    <div class="recent-head">
+                        <div class="recent-title">
+                            <h3> <img src="assets/images/Vector (13).svg" alt="">Recent Scans</h3>
+                        </div>
+                        <div class="btn-area">
+                            <button class="recent-scan-btn">New Scan <img src="assets/images/Trailing icon.svg"
+                                    alt=""></button>
+                        </div>
+                    </div>
+
+                    <div class="scan-section">
+                        <div class="recent-tab-area">
+                            <span style="color:var(--muted)">Your recent scans</span>
+
+                            <div class="scan-tabs">
+                                <button class="scan-tab active" data-target="week">Week</button>
+                                <button class="scan-tab" data-target="month">Month</button>
+                                <button class="scan-tab" data-target="year">Year</button>
+                            </div>
+                        </div>
+
+                        <!-- PANELS -->
+                        <div class="scan-panels">
+
+                            <!-- WEEK -->
+                            <div class="scan-list active" data-panel="week" id="weekPanel">
+                                <div class="accordion">
+                                    <!-- item -->
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">
+                                            <div class="scan-item">
+                                                <div class="left">
+                                                    <img src="assets/images/scan-logo.svg" alt="">
+                                                    <h4 class="scan-site-name"> Branders.design</h4>
+                                                    <p class="scan-status">In Progress</p>
+                                                    <span class="scan-date">2025-10-10 12:20</span>
+                                                </div>
+                                                <div class="middle">
+                                                    <span class="item-one">● High (245)</span>
+                                                    <span class="item-two">● Medium (976)</span>
+                                                    <span class="item-three">● Low (46)</span>
+                                                    <span class="item-four">● New (2)</span>
+                                                </div>
+                                                <div class="right">
+                                                    <button class="view-result"><img src="assets/images/visibility.svg"
+                                                            alt="">View
+                                                        result</button>
+                                                    <button class="scan"><img
+                                                            src="assets/images/swap_driving_apps_wheel.svg" alt="">
+                                                        Scan</button>
+                                                    <button class="view-result"><img src="assets/images/download.svg"
+                                                            alt=""></button>
+                                                    <button class="accordion-item-expand"><img
+                                                            src="assets/images/keyboard_arrow_down.svg" alt=""></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <p>This is content for section one.</p>
+                                        </div>
+                                    </div>
+                                    <!-- item -->
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">
+                                            <div class="scan-item">
+                                                <div class="left">
+                                                    <img src="assets/images/scan-logo.svg" alt="">
+                                                    <h4 class="scan-site-name"> Branders.design</h4>
+                                                    <p class="scan-status scan-hold">On Hold</p>
+                                                    <span class="scan-date">2025-10-10 12:20</span>
+                                                </div>
+                                                <div class="middle">
+                                                    <span class="item-one">● High (245)</span>
+                                                    <span class="item-two">● Medium (976)</span>
+                                                    <span class="item-three">● Low (46)</span>
+                                                    <span class="item-four">● New (2)</span>
+                                                </div>
+                                                <div class="right">
+                                                    <button class="view-result"><img src="assets/images/visibility.svg"
+                                                            alt="">View
+                                                        result</button>
+                                                    <button class="scan"><img
+                                                            src="assets/images/swap_driving_apps_wheel.svg" alt="">
+                                                        Scan</button>
+                                                    <button class="view-result"><img src="assets/images/download.svg"
+                                                            alt=""></button>
+                                                    <button class="accordion-item-expand"><img
+                                                            src="assets/images/keyboard_arrow_down.svg" alt=""></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <p>This is content for section one.</p>
+                                        </div>
+                                    </div>
+                                    <!-- item -->
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">
+                                            <div class="scan-item">
+                                                <div class="left">
+                                                    <img src="assets/images/scan-logo.svg" alt="">
+                                                    <h4 class="scan-site-name"> Branders.design</h4>
+                                                    <p class="scan-status scan-completed">Completed</p>
+                                                    <span class="scan-date">2025-10-10 12:20</span>
+                                                </div>
+                                                <div class="middle">
+                                                    <span class="item-one">● High (245)</span>
+                                                    <span class="item-two">● Medium (976)</span>
+                                                    <span class="item-three">● Low (46)</span>
+                                                    <span class="item-four">● New (2)</span>
+                                                </div>
+                                                <div class="right">
+                                                    <button class="view-result"><img src="assets/images/visibility.svg"
+                                                            alt="">View
+                                                        result</button>
+                                                    <button class="scan"><img
+                                                            src="assets/images/swap_driving_apps_wheel.svg" alt="">
+                                                        Scan</button>
+                                                    <button class="view-result"><img src="assets/images/download.svg"
+                                                            alt=""></button>
+                                                    <button class="accordion-item-expand"><img
+                                                            src="assets/images/keyboard_arrow_down.svg" alt=""></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <p>This is content for section one.</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- MONTH -->
+                            <div class="scan-list" data-panel="month" id="monthPanel">
+                                <div class="accordion">
+                                    <!-- item -->
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">
+                                            <div class="scan-item">
+                                                <div class="left">
+                                                    <img src="assets/images/scan-logo.svg" alt="">
+                                                    <h4 class="scan-site-name"> Branders.design</h4>
+                                                    <p class="scan-status scan-completed">Completed</p>
+                                                    <span class="scan-date">2025-10-10 12:20</span>
+                                                </div>
+                                                <div class="middle">
+                                                    <span class="item-one">● High (245)</span>
+                                                    <span class="item-two">● Medium (976)</span>
+                                                    <span class="item-three">● Low (46)</span>
+                                                    <span class="item-four">● New (2)</span>
+                                                </div>
+                                                <div class="right">
+                                                    <button class="view-result"><img src="assets/images/visibility.svg"
+                                                            alt="">View
+                                                        result</button>
+                                                    <button class="scan"><img
+                                                            src="assets/images/swap_driving_apps_wheel.svg" alt="">
+                                                        Scan</button>
+                                                    <button class="view-result"><img src="assets/images/download.svg"
+                                                            alt=""></button>
+                                                    <button class="accordion-item-expand"><img
+                                                            src="assets/images/keyboard_arrow_down.svg" alt=""></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <p>This is content for section one.</p>
+                                        </div>
+                                    </div>
+                                    <!-- item -->
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">
+                                            <div class="scan-item">
+                                                <div class="left">
+                                                    <img src="assets/images/scan-logo.svg" alt="">
+                                                    <h4 class="scan-site-name"> Branders.design</h4>
+                                                    <p class="scan-status scan-hold">On Hold</p>
+                                                    <span class="scan-date">2025-10-10 12:20</span>
+                                                </div>
+                                                <div class="middle">
+                                                    <span class="item-one">● High (245)</span>
+                                                    <span class="item-two">● Medium (976)</span>
+                                                    <span class="item-three">● Low (46)</span>
+                                                    <span class="item-four">● New (2)</span>
+                                                </div>
+                                                <div class="right">
+                                                    <button class="view-result"><img src="assets/images/visibility.svg"
+                                                            alt="">View
+                                                        result</button>
+                                                    <button class="scan"><img
+                                                            src="assets/images/swap_driving_apps_wheel.svg" alt="">
+                                                        Scan</button>
+                                                    <button class="view-result"><img src="assets/images/download.svg"
+                                                            alt=""></button>
+                                                    <button class="accordion-item-expand"><img
+                                                            src="assets/images/keyboard_arrow_down.svg" alt=""></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <p>This is content for section one.</p>
+                                        </div>
+                                    </div>
+                                    <!-- item -->
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">
+                                            <div class="scan-item">
+                                                <div class="left">
+                                                    <img src="assets/images/scan-logo.svg" alt="">
+                                                    <h4 class="scan-site-name"> Branders.design</h4>
+                                                    <p class="scan-status">In Progress</p>
+                                                    <span class="scan-date">2025-10-10 12:20</span>
+                                                </div>
+                                                <div class="middle">
+                                                    <span class="item-one">● High (245)</span>
+                                                    <span class="item-two">● Medium (976)</span>
+                                                    <span class="item-three">● Low (46)</span>
+                                                    <span class="item-four">● New (2)</span>
+                                                </div>
+                                                <div class="right">
+                                                    <button class="view-result"><img src="assets/images/visibility.svg"
+                                                            alt="">View
+                                                        result</button>
+                                                    <button class="scan"><img
+                                                            src="assets/images/swap_driving_apps_wheel.svg" alt="">
+                                                        Scan</button>
+                                                    <button class="view-result"><img src="assets/images/download.svg"
+                                                            alt=""></button>
+                                                    <button class="accordion-item-expand"><img
+                                                            src="assets/images/keyboard_arrow_down.svg" alt=""></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <p>This is content for section one.</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- YEAR -->
+                            <div class="scan-list" data-panel="year" id="yearPanel">
+                                <div class="accordion">
+                                    <!-- item -->
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">
+                                            <div class="scan-item">
+                                                <div class="left">
+                                                    <img src="assets/images/scan-logo.svg" alt="">
+                                                    <h4 class="scan-site-name"> Branders.design</h4>
+                                                    <p class="scan-status scan-completed">Completed</p>
+                                                    <span class="scan-date">2025-10-10 12:20</span>
+                                                </div>
+                                                <div class="middle">
+                                                    <span class="item-one">● High (245)</span>
+                                                    <span class="item-two">● Medium (976)</span>
+                                                    <span class="item-three">● Low (46)</span>
+                                                    <span class="item-four">● New (2)</span>
+                                                </div>
+                                                <div class="right">
+                                                    <button class="view-result"><img src="assets/images/visibility.svg"
+                                                            alt="">View
+                                                        result</button>
+                                                    <button class="scan"><img
+                                                            src="assets/images/swap_driving_apps_wheel.svg" alt="">
+                                                        Scan</button>
+                                                    <button class="view-result"><img src="assets/images/download.svg"
+                                                            alt=""></button>
+                                                    <button class="accordion-item-expand"><img
+                                                            src="assets/images/keyboard_arrow_down.svg" alt=""></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <p>This is content for section one.</p>
+                                        </div>
+                                    </div>
+                                    <!-- item -->
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">
+                                            <div class="scan-item">
+                                                <div class="left">
+                                                    <img src="assets/images/scan-logo.svg" alt="">
+                                                    <h4 class="scan-site-name"> Branders.design</h4>
+                                                    <p class="scan-status">In Progress</p>
+                                                    <span class="scan-date">2025-10-10 12:20</span>
+                                                </div>
+                                                <div class="middle">
+                                                    <span class="item-one">● High (245)</span>
+                                                    <span class="item-two">● Medium (976)</span>
+                                                    <span class="item-three">● Low (46)</span>
+                                                    <span class="item-four">● New (2)</span>
+                                                </div>
+                                                <div class="right">
+                                                    <button class="view-result"><img src="assets/images/visibility.svg"
+                                                            alt="">View
+                                                        result</button>
+                                                    <button class="scan"><img
+                                                            src="assets/images/swap_driving_apps_wheel.svg" alt="">
+                                                        Scan</button>
+                                                    <button class="view-result"><img src="assets/images/download.svg"
+                                                            alt=""></button>
+                                                    <button class="accordion-item-expand"><img
+                                                            src="assets/images/keyboard_arrow_down.svg" alt=""></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <p>This is content for section one.</p>
+                                        </div>
+                                    </div>
+                                    <!-- item -->
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">
+                                            <div class="scan-item">
+                                                <div class="left">
+                                                    <img src="assets/images/scan-logo.svg" alt="">
+                                                    <h4 class="scan-site-name"> Branders.design</h4>
+                                                    <p class="scan-status scan-hold">On Hold</p>
+                                                    <span class="scan-date">2025-10-10 12:20</span>
+                                                </div>
+                                                <div class="middle">
+                                                    <span class="item-one">● High (245)</span>
+                                                    <span class="item-two">● Medium (976)</span>
+                                                    <span class="item-three">● Low (46)</span>
+                                                    <span class="item-four">● New (2)</span>
+                                                </div>
+                                                <div class="right">
+                                                    <button class="view-result"><img src="assets/images/visibility.svg"
+                                                            alt="">View
+                                                        result</button>
+                                                    <button class="scan"><img
+                                                            src="assets/images/swap_driving_apps_wheel.svg" alt="">
+                                                        Scan</button>
+                                                    <button class="view-result"><img src="assets/images/download.svg"
+                                                            alt=""></button>
+                                                    <button class="accordion-item-expand"><img
+                                                            src="assets/images/keyboard_arrow_down.svg" alt=""></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <p>This is content for section one.</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Other panels -->
+            <section id="assetsPanel" class="panel">
+                <div class="cards">
+                    <div class="card scan-card">
+                        <div class="card-body">
+                            <div class="card-content">
+                                <h5>Total Assets</h5>
+                                <div class="value">4</div>
+                            </div>
+                            <div class="card-img">
+                                <img src="assets/images/dns-colored.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card scan-card">
+                        <div class="card-body">
+                            <div class="card-content">
+                                <h5>HIGH RISK ASSETS</h5>
+                                <div class="value">23</div>
+                            </div>
+                            <div class="card-img">
+                                <img src="assets/images/warning.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card scan-card">
+                        <div class="card-body">
+                            <div class="card-content">
+                                <h5>RECENT CHANGES</h5>
+                                <div class="value">11</div>
+                            </div>
+                            <div class="card-img">
+                                <img src="assets/images/highlight_mouse_cursor.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="assets" style="margin-top:18px">
+
+                    <!-- ===============================TABS================================ -->
+                    <div class="asset-manage-tabs">
+                        <button class="asset-manage-tab-btn asset-manage-active" data-tab="asset-manage-discovered">
+                            Discovered Assets
+                        </button>
+                        <button class="asset-manage-tab-btn" data-tab="asset-manage-changes">
+                            Asset Changes
+                        </button>
+                    </div>
+
+                    <!-- ===============================DISCOVERED ASSETS================================ -->
+                    <div class="asset-manage-panel asset-manage-active" id="asset-manage-discovered">
+                        <div class="inner-asset-head">
+                            <span>Each asset group represents a root domain. Expand a domain to see all discovered
+                                hosts, their exposure level, and live risk factors.</span>
+                            <div class="asset-manage-filters"></div>
+                        </div>
+
+                        <div class="asset-manage-items">
+                            <div class="accordion">
+                                <!-- item -->
+                                <div class="accordion-item asset-manage-item" data-level="Critical">
+                                    <div class="accordion-header">
+                                        <div class="scan-item">
+                                            <div class="left">
+                                                <img src="assets/images/scan-logo.svg" alt="">
+                                                <h4 class="scan-site-name"> Branders.design</h4>
+                                                <p class="scan-status">42 Discovered Assets</p>
+                                                <p class="scan-status scan-risk">11 High Risk</p>
+                                            </div>
+
+                                            <div class="right">
+                                                <button class="accordion-item-expand"><img
+                                                        src="assets/images/keyboard_arrow_down.svg" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <p>This is content for section one.</p>
+                                    </div>
+                                </div>
+                                <!-- item -->
+                                <div class="accordion-item asset-manage-item" data-level="Info">
+                                    <div class="accordion-header">
+                                        <div class="scan-item">
+                                            <div class="left">
+                                                <img src="assets/images/scan-logo.svg" alt="">
+                                                <h4 class="scan-site-name"> Branders.design</h4>
+                                                <p class="scan-status">42 Discovered Assets</p>
+                                                <p class="scan-status scan-risk">11 High Risk</p>
+                                            </div>
+
+                                            <div class="right">
+                                                <button class="accordion-item-expand"><img
+                                                        src="assets/images/keyboard_arrow_down.svg" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <p>This is content for section one.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ===============================ASSET CHANGES============================== -->
+                    <div class="asset-manage-panel" id="asset-manage-changes">
+                        <div class="inner-asset-head">
+                            <span>Each asset group represents a root domain. Expand a domain to see all discovered
+                                hosts, their exposure level, and live risk factors.</span>
+                            <div class="asset-manage-filters"></div>
+                        </div>
+
+                        <div class="asset-manage-items">
+                            <div class="accordion">
+                                <!-- item -->
+                                <div class="accordion-item asset-manage-item" data-level="Critical">
+                                    <div class="accordion-header">
+                                        <div class="scan-item">
+                                            <div class="left">
+                                                <h4 class="scan-site-name"> apis.int.dexpose.io</h4>
+                                                <p class="scan-status">Created</p>
+
+                                            </div>
+                                            <div class="middle">
+                                                <span class="scan-desc">New internal API asset discovered</span>
+                                            </div>
+                                            <div class="right">
+                                                <p class="scan-status">Medium</p>
+                                                <span class="scan-date">2025-10-11 13:50</span>
+                                                <button class="accordion-item-expand"><img
+                                                        src="assets/images/keyboard_arrow_down.svg" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <p>This is content for section one.</p>
+                                    </div>
+                                </div>
+                                <!-- item -->
+                                <div class="accordion-item asset-manage-item" data-level="High">
+                                    <div class="accordion-header">
+                                        <div class="scan-item">
+                                            <div class="left">
+                                                <h4 class="scan-site-name"> msps-proxy.public.dexpose.io</h4>
+                                                <p class="scan-status">Created</p>
+
+                                            </div>
+                                            <div class="middle">
+                                                <span class="scan-desc">New internal API asset discovered</span>
+                                            </div>
+                                            <div class="right">
+                                                <p class="scan-status scan-risk">High</p>
+                                                <span class="scan-date">2025-10-11 13:50</span>
+                                                <button class="accordion-item-expand"><img
+                                                        src="assets/images/keyboard_arrow_down.svg" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <p>This is content for section one.</p>
+                                    </div>
+                                </div>
+                                <!-- item -->
+                                <div class="accordion-item asset-manage-item" data-level="Low">
+                                    <div class="accordion-header">
+                                        <div class="scan-item">
+                                            <div class="left">
+                                                <h4 class="scan-site-name"> www.branders.design</h4>
+                                                <p class="scan-status">Created</p>
+
+                                            </div>
+                                            <div class="middle">
+                                                <span class="scan-desc">New internal API asset discovered</span>
+                                            </div>
+                                            <div class="right">
+                                                <p class="scan-status scan-hold">Low</p>
+                                                <span class="scan-date">2025-10-11 13:50</span>
+                                                <button class="accordion-item-expand"><img
+                                                        src="assets/images/keyboard_arrow_down.svg" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <p>This is content for section one.</p>
+                                    </div>
+                                </div>
+                                <!-- item -->
+                                <div class="accordion-item asset-manage-item" data-level="Medium">
+                                    <div class="accordion-header">
+                                        <div class="scan-item">
+                                            <div class="left">
+                                                <h4 class="scan-site-name"> apis.int.dexpose.io</h4>
+                                                <p class="scan-status">Created</p>
+
+                                            </div>
+                                            <div class="middle">
+                                                <span class="scan-desc">New internal API asset discovered</span>
+                                            </div>
+                                            <div class="right">
+                                                <p class="scan-status scan-risk">Medium</p>
+                                                <span class="scan-date">2025-10-11 13:50</span>
+                                                <button class="accordion-item-expand"><img
+                                                        src="assets/images/keyboard_arrow_down.svg" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <p>This is content for section one.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="scansPanel" class="panel">
+                <div class="inner-scan-panel">
+
+                    <div class="scan-panel-top">
+                        <!-- RADAR -->
+                        <div class="radar-wrap">
+                            <div class="radar">
+                                <div class="scan-indicator" id="scanBeam"></div>
+                            </div>
+                        </div>
+
+                        <!-- FORM -->
+                        <form class="scan-form-panel" id="scanForm">
+                            <div class="panel-top">
+                                <span class="material-icons">search</span>
+                                <input type="url" id="url" placeholder="yourdomain.com" required />
+                                <img src="assets/images/Tail text.svg" alt="" class="tailText">
+                            </div>
+
+                            <p>
+                                Instantly check your domain for security weaknesses. Our radar-powered AI will detect
+                                and prioritize potential threats in real-time.
+                            </p>
+
+                            <button type="submit" id="scanBtn">Scan</button>
+                        </form>
+                    </div>
+                    <div class="scan-panel-bottom">
+
+                        <div class="recent" style="margin-top:30px">
+                            <div class="recent-head">
+                                <div class="recent-title">
+                                    <h3> <img src="assets/images/Vector (13).svg" alt="">Recent Scans</h3>
+                                </div>
+                                <div class="btn-area">
+                                    <button class="recent-scan-btn">New Scan <img src="assets/images/Trailing icon.svg"
+                                            alt=""></button>
+                                </div>
+                            </div>
+
+                            <div class="scan-section">
+                                <div class="recent-tab-area">
+                                    <span style="color:var(--muted)">Your recent scans</span>
+
+                                    <div class="scan-tabs">
+                                        <button class="scan-tab active" data-target="week">Week</button>
+                                        <button class="scan-tab" data-target="month">Month</button>
+                                        <button class="scan-tab" data-target="year">Year</button>
+                                    </div>
+                                </div>
+
+                                <!-- PANELS -->
+                                <div class="scan-panels">
+
+                                    <!-- WEEK -->
+                                    <div class="scan-list active" data-panel="week" id="weekPanel">
+                                        <div class="accordion">
+                                            <!-- item -->
+                                            <div class="accordion-item">
+                                                <div class="accordion-header">
+                                                    <div class="scan-item">
+                                                        <div class="left">
+                                                            <img src="assets/images/scan-logo.svg" alt="">
+                                                            <h4 class="scan-site-name"> Branders.design</h4>
+                                                            <p class="scan-status">In Progress</p>
+                                                            <span class="scan-date">2025-10-10 12:20</span>
+                                                        </div>
+                                                        <div class="middle">
+                                                            <span class="item-one">● High (245)</span>
+                                                            <span class="item-two">● Medium (976)</span>
+                                                            <span class="item-three">● Low (46)</span>
+                                                            <span class="item-four">● New (2)</span>
+                                                        </div>
+                                                        <div class="right">
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/visibility.svg" alt="">View
+                                                                result</button>
+                                                            <button class="scan"><img
+                                                                    src="assets/images/swap_driving_apps_wheel.svg"
+                                                                    alt="">
+                                                                Scan</button>
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/download.svg" alt=""></button>
+                                                            <button class="accordion-item-expand"><img
+                                                                    src="assets/images/keyboard_arrow_down.svg"
+                                                                    alt=""></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-content">
+                                                    <p>This is content for section one.</p>
+                                                </div>
+                                            </div>
+                                            <!-- item -->
+                                            <div class="accordion-item">
+                                                <div class="accordion-header">
+                                                    <div class="scan-item">
+                                                        <div class="left">
+                                                            <img src="assets/images/scan-logo.svg" alt="">
+                                                            <h4 class="scan-site-name"> Branders.design</h4>
+                                                            <p class="scan-status scan-hold">On Hold</p>
+                                                            <span class="scan-date">2025-10-10 12:20</span>
+                                                        </div>
+                                                        <div class="middle">
+                                                            <span class="item-one">● High (245)</span>
+                                                            <span class="item-two">● Medium (976)</span>
+                                                            <span class="item-three">● Low (46)</span>
+                                                            <span class="item-four">● New (2)</span>
+                                                        </div>
+                                                        <div class="right">
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/visibility.svg" alt="">View
+                                                                result</button>
+                                                            <button class="scan"><img
+                                                                    src="assets/images/swap_driving_apps_wheel.svg"
+                                                                    alt="">
+                                                                Scan</button>
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/download.svg" alt=""></button>
+                                                            <button class="accordion-item-expand"><img
+                                                                    src="assets/images/keyboard_arrow_down.svg"
+                                                                    alt=""></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-content">
+                                                    <p>This is content for section one.</p>
+                                                </div>
+                                            </div>
+                                            <!-- item -->
+                                            <div class="accordion-item">
+                                                <div class="accordion-header">
+                                                    <div class="scan-item">
+                                                        <div class="left">
+                                                            <img src="assets/images/scan-logo.svg" alt="">
+                                                            <h4 class="scan-site-name"> Branders.design</h4>
+                                                            <p class="scan-status scan-completed">Completed</p>
+                                                            <span class="scan-date">2025-10-10 12:20</span>
+                                                        </div>
+                                                        <div class="middle">
+                                                            <span class="item-one">● High (245)</span>
+                                                            <span class="item-two">● Medium (976)</span>
+                                                            <span class="item-three">● Low (46)</span>
+                                                            <span class="item-four">● New (2)</span>
+                                                        </div>
+                                                        <div class="right">
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/visibility.svg" alt="">View
+                                                                result</button>
+                                                            <button class="scan"><img
+                                                                    src="assets/images/swap_driving_apps_wheel.svg"
+                                                                    alt="">
+                                                                Scan</button>
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/download.svg" alt=""></button>
+                                                            <button class="accordion-item-expand"><img
+                                                                    src="assets/images/keyboard_arrow_down.svg"
+                                                                    alt=""></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-content">
+                                                    <p>This is content for section one.</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- MONTH -->
+                                    <div class="scan-list" data-panel="month" id="monthPanel">
+                                        <div class="accordion">
+                                            <!-- item -->
+                                            <div class="accordion-item">
+                                                <div class="accordion-header">
+                                                    <div class="scan-item">
+                                                        <div class="left">
+                                                            <img src="assets/images/scan-logo.svg" alt="">
+                                                            <h4 class="scan-site-name"> Branders.design</h4>
+                                                            <p class="scan-status scan-completed">Completed</p>
+                                                            <span class="scan-date">2025-10-10 12:20</span>
+                                                        </div>
+                                                        <div class="middle">
+                                                            <span class="item-one">● High (245)</span>
+                                                            <span class="item-two">● Medium (976)</span>
+                                                            <span class="item-three">● Low (46)</span>
+                                                            <span class="item-four">● New (2)</span>
+                                                        </div>
+                                                        <div class="right">
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/visibility.svg" alt="">View
+                                                                result</button>
+                                                            <button class="scan"><img
+                                                                    src="assets/images/swap_driving_apps_wheel.svg"
+                                                                    alt="">
+                                                                Scan</button>
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/download.svg" alt=""></button>
+                                                            <button class="accordion-item-expand"><img
+                                                                    src="assets/images/keyboard_arrow_down.svg"
+                                                                    alt=""></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-content">
+                                                    <p>This is content for section one.</p>
+                                                </div>
+                                            </div>
+                                            <!-- item -->
+                                            <div class="accordion-item">
+                                                <div class="accordion-header">
+                                                    <div class="scan-item">
+                                                        <div class="left">
+                                                            <img src="assets/images/scan-logo.svg" alt="">
+                                                            <h4 class="scan-site-name"> Branders.design</h4>
+                                                            <p class="scan-status scan-hold">On Hold</p>
+                                                            <span class="scan-date">2025-10-10 12:20</span>
+                                                        </div>
+                                                        <div class="middle">
+                                                            <span class="item-one">● High (245)</span>
+                                                            <span class="item-two">● Medium (976)</span>
+                                                            <span class="item-three">● Low (46)</span>
+                                                            <span class="item-four">● New (2)</span>
+                                                        </div>
+                                                        <div class="right">
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/visibility.svg" alt="">View
+                                                                result</button>
+                                                            <button class="scan"><img
+                                                                    src="assets/images/swap_driving_apps_wheel.svg"
+                                                                    alt="">
+                                                                Scan</button>
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/download.svg" alt=""></button>
+                                                            <button class="accordion-item-expand"><img
+                                                                    src="assets/images/keyboard_arrow_down.svg"
+                                                                    alt=""></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-content">
+                                                    <p>This is content for section one.</p>
+                                                </div>
+                                            </div>
+                                            <!-- item -->
+                                            <div class="accordion-item">
+                                                <div class="accordion-header">
+                                                    <div class="scan-item">
+                                                        <div class="left">
+                                                            <img src="assets/images/scan-logo.svg" alt="">
+                                                            <h4 class="scan-site-name"> Branders.design</h4>
+                                                            <p class="scan-status">In Progress</p>
+                                                            <span class="scan-date">2025-10-10 12:20</span>
+                                                        </div>
+                                                        <div class="middle">
+                                                            <span class="item-one">● High (245)</span>
+                                                            <span class="item-two">● Medium (976)</span>
+                                                            <span class="item-three">● Low (46)</span>
+                                                            <span class="item-four">● New (2)</span>
+                                                        </div>
+                                                        <div class="right">
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/visibility.svg" alt="">View
+                                                                result</button>
+                                                            <button class="scan"><img
+                                                                    src="assets/images/swap_driving_apps_wheel.svg"
+                                                                    alt="">
+                                                                Scan</button>
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/download.svg" alt=""></button>
+                                                            <button class="accordion-item-expand"><img
+                                                                    src="assets/images/keyboard_arrow_down.svg"
+                                                                    alt=""></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-content">
+                                                    <p>This is content for section one.</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- YEAR -->
+                                    <div class="scan-list" data-panel="year" id="yearPanel">
+                                        <div class="accordion">
+                                            <!-- item -->
+                                            <div class="accordion-item">
+                                                <div class="accordion-header">
+                                                    <div class="scan-item">
+                                                        <div class="left">
+                                                            <img src="assets/images/scan-logo.svg" alt="">
+                                                            <h4 class="scan-site-name"> Branders.design</h4>
+                                                            <p class="scan-status scan-completed">Completed</p>
+                                                            <span class="scan-date">2025-10-10 12:20</span>
+                                                        </div>
+                                                        <div class="middle">
+                                                            <span class="item-one">● High (245)</span>
+                                                            <span class="item-two">● Medium (976)</span>
+                                                            <span class="item-three">● Low (46)</span>
+                                                            <span class="item-four">● New (2)</span>
+                                                        </div>
+                                                        <div class="right">
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/visibility.svg" alt="">View
+                                                                result</button>
+                                                            <button class="scan"><img
+                                                                    src="assets/images/swap_driving_apps_wheel.svg"
+                                                                    alt="">
+                                                                Scan</button>
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/download.svg" alt=""></button>
+                                                            <button class="accordion-item-expand"><img
+                                                                    src="assets/images/keyboard_arrow_down.svg"
+                                                                    alt=""></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-content">
+                                                    <p>This is content for section one.</p>
+                                                </div>
+                                            </div>
+                                            <!-- item -->
+                                            <div class="accordion-item">
+                                                <div class="accordion-header">
+                                                    <div class="scan-item">
+                                                        <div class="left">
+                                                            <img src="assets/images/scan-logo.svg" alt="">
+                                                            <h4 class="scan-site-name"> Branders.design</h4>
+                                                            <p class="scan-status">In Progress</p>
+                                                            <span class="scan-date">2025-10-10 12:20</span>
+                                                        </div>
+                                                        <div class="middle">
+                                                            <span class="item-one">● High (245)</span>
+                                                            <span class="item-two">● Medium (976)</span>
+                                                            <span class="item-three">● Low (46)</span>
+                                                            <span class="item-four">● New (2)</span>
+                                                        </div>
+                                                        <div class="right">
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/visibility.svg" alt="">View
+                                                                result</button>
+                                                            <button class="scan"><img
+                                                                    src="assets/images/swap_driving_apps_wheel.svg"
+                                                                    alt="">
+                                                                Scan</button>
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/download.svg" alt=""></button>
+                                                            <button class="accordion-item-expand"><img
+                                                                    src="assets/images/keyboard_arrow_down.svg"
+                                                                    alt=""></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-content">
+                                                    <p>This is content for section one.</p>
+                                                </div>
+                                            </div>
+                                            <!-- item -->
+                                            <div class="accordion-item">
+                                                <div class="accordion-header">
+                                                    <div class="scan-item">
+                                                        <div class="left">
+                                                            <img src="assets/images/scan-logo.svg" alt="">
+                                                            <h4 class="scan-site-name"> Branders.design</h4>
+                                                            <p class="scan-status scan-hold">On Hold</p>
+                                                            <span class="scan-date">2025-10-10 12:20</span>
+                                                        </div>
+                                                        <div class="middle">
+                                                            <span class="item-one">● High (245)</span>
+                                                            <span class="item-two">● Medium (976)</span>
+                                                            <span class="item-three">● Low (46)</span>
+                                                            <span class="item-four">● New (2)</span>
+                                                        </div>
+                                                        <div class="right">
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/visibility.svg" alt="">View
+                                                                result</button>
+                                                            <button class="scan"><img
+                                                                    src="assets/images/swap_driving_apps_wheel.svg"
+                                                                    alt="">
+                                                                Scan</button>
+                                                            <button class="view-result"><img
+                                                                    src="assets/images/download.svg" alt=""></button>
+                                                            <button class="accordion-item-expand"><img
+                                                                    src="assets/images/keyboard_arrow_down.svg"
+                                                                    alt=""></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-content">
+                                                    <p>This is content for section one.</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ================= Report PANEL ================= -->
+            <div class="new-sidebar-panel report-panel" id="reportPanel">
+                <aside class="new-sidebar report-sidebar" id="report_sidebar">
+                    <div class="top">
+                        <div class="report-header">
+                            <div class="inner-header-top">
+                                <div class="brand">
+                                    <div class="mark"><img src="assets/images/site-logo.png" alt=""></div>
+                                    <div class="title">M.tech</div>
+                                    <div class="ai-tag"><img src="assets/images/ai-Tag.png" alt=""></div>
+                                </div>
+                                <div class="sidebar-collapse-area">
+                                    <button id="reportToggleSidebar" class="report-collapse-toggle"
+                                        aria-label="Toggle report-sidebar">
+                                        <i id="reportCollapseIcon" class="report-chev"><img
+                                                src="assets/images/sidebar.left.svg" alt=""></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button id="closeReport"><img src="assets/images/arrow-back-button.svg" alt=""> <span>Back
+                                    To
+                                    Porta;</span></button>
+                        </div>
+
+                        <div class="Report-Components">
+                            <h5>Report Component</h5>
+                            <div class="inner-rc-sidebar" id="rc_sidebar_btn"></div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="bottom report-sidebar-bottom">
+                        <div class="footer-links">
+                            <a class="item pricingMenu"><img src="assets/images/attach_money.svg" alt="">
+                                <p>Pricing Billing</p>
+                            </a>
+                            <a class="item settingMenu"><img src="assets/images/settings.svg" alt="">
+                                <p>Setting</p>
+                            </a>
+                            <a class="item"><img src="assets/images/arrow.forward.svg" alt="">
+                                <p>Logout</p>
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+
+                <section class="report-content-area">
+                    <header class="header">
+                        <div class="title">
+                            <h1 id="pageTitle"> Build Custom Report</h1>
+                            <span class="breadcrumbs">Home / <span class="current-page">Reports</span></span>
+                        </div>
+                        <div class="user">
+                            <div class="avatar">
+                                <img src="assets/images/user-avatar.jpg" alt="avatar">
+                            </div>
+                            <div class="user-info">
+                                <h3>Welcome, Mitch 👋</h3>
+                                <span>Today you are in Canada</span>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="report-content" id="rc_content">
+                        <!-- File genarate area start -->
+                        <form class="form-container" id="reportForm">
+                            <input type="text" placeholder="Report Title" id="reportTitle" required>
+                            <select id="scanSelect" required>
+                                <option value="">Select Scan</option>
+                                <option value="scan1">Scan 1</option>
+                                <option value="scan2">Scan 2</option>
+                            </select>
+                            <select id="formatSelect" required>
+                                <option value="">Format</option>
+                                <option value="pdf">PDF</option>
+                                <option value="html">HTML Report</option>
+                                <option value="doc">Word Document Report</option>
+                            </select>
+                            <button type="submit">Generate</button>
+                        </form>
+                        <!-- File genarate area close -->
+
+                        <!-- Drag and drop button area -->
+                        <div class="inner-rc-content" id="inner_rc_content"></div>
+                    </div>
+                </section>
+
+                <div class="rc-input-popup" id="rc_input_popup">
+                    <div class="popup-box">
+                        <div class="popup_header">
+                            <div class="popup-title">
+                                <span class="material-symbols-outlined">settings</span>
+                                <h3>Configure Remediation Roadmap</h3>
+                            </div>
+                            <span class="material-symbols-outlined rc_popup_close" onclick="closePopup()">close</span>
+                        </div>
+                        <div class="popup_body">
+                            <input type="text" id="popupInput">
+
+                            <div class="checkbox-list">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" checked name="detailedInfo" id="detailedInfo">
+                                    <label for="detailedInfo">Include Detailed Information</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" checked name="visualizations" id="visualizations">
+                                    <label for="visualizations">Include Charts and Visualizations</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" name="insertPageBreak" id="insertPageBreak">
+                                    <label for="insertPageBreak">Insert Page Break Before This Section</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popup-bottom">
+                            <button class="close-popup" onclick="closePopup()">Cancel</button>
+                            <button class="save-popup" onclick="savePopup()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <section id="threatPanel" class="panel">
+                <div class="card" style="padding:14px">
+                    <h3>Threat Intelligence</h3>
+                </div>
+            </section>
+
+            <section id="brandPanel" class="panel">
+                <div class="card" style="padding:14px">
+                    <h3>Brand Protection</h3>
+                </div>
+            </section>
+
+            <section id="compliancePanel" class="panel">
+                <div class="card" style="padding:14px">
+                    <h3>Compliance</h3>
+                </div>
+            </section>
+
+            <section id="pricingPanel" class="panel">
+                <div class="card" style="padding:14px">
+                    <div class="pricing">
+                        <!-- TOP PRICING ROW -->
+                        <div class="pricing-row">
+                            <!-- ESSENTIAL -->
+                            <div class="pricing-card essential-card">
+                                <span class="badge essential"><img src="assets/images/essential.svg" alt=""> ESSENTIAL</span>
+                                <h4>Vulnerability Scanning</h4>
+                                <h2>CAD $399 <small>/scan</small></h2>
+                                <p class="desc">Essential security scanning for your domain</p>
+
+                                <button class="btn dark">Sign Up</button>
+
+                                <ul>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Complete vulnerability scan</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Security risk assessment</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Detailed vulnerability report</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> 90-day retest eligibility</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Priority email support</li>
+                                </ul>
+                            </div>
+
+                            <!-- MOST POPULAR -->
+                            <div class="pricing-card featured popular-card">
+                                <span class="badge popular">MOST POPULAR</span>
+                                <h4>Annual</h4>
+                                <h2>CAD $2999</h2>
+                                <p class="desc">Annual unlimited vulnerability scanning with 10 scans per year</p>
+
+                                <button class="btn light">Sign Up</button>
+
+                                <ul>
+                                    <li><span class="material-symbols-outlined">check_circle</span> 10 vulnerability scans per year</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Quick scan functionality</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> No per-scan charges</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Annual subscription convenience</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Priority support</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> 90-day retest eligibility</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Instant scan deployment</li>
+                                </ul>
+                            </div>
+
+                            <!-- RECOMMENDED -->
+                            <div class="pricing-card recommended-card">
+                                <span class="badge recommended"><img src="assets/images/recomended-value.svg" alt=""> RECOMMENDED</span>
+                                <h4>Vulnerability + Phishing</h4>
+                                <h2>CAD $699 <small>/scan</small></h2>
+                                <p class="desc">Comprehensive assessment including phishing simulation</p>
+
+                                <button class="btn dark">Sign Up</button>
+
+                                <ul>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Complete vulnerability scan</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Simulated phishing campaign</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Employee awareness metrics</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Security awareness training</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> 90-day retest eligibility</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Priority phone support</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <!-- BOTTOM ROW -->
+                        <div class="pricing-row large">
+
+                            <!-- CUSTOM ASSESSMENT -->
+                            <div class="pricing-card wide">
+                                <div class="left">
+                                    <h2>Custom Vulnerability Assessment and Penetration Testing - Manual and Automated
+                                    </h2>
+                                    <p class="desc">Tailored security testing for enterprise environments</p>
+
+                                    <h5>What’s included</h5>
+                                    <ul class="two-col">
+                                        <li><span class="material-symbols-outlined">check_circle</span> Custom penetration testing</li>
+                                        <li><span class="material-symbols-outlined">check_circle</span> Advanced vulnerability assessment</li>
+                                        <li><span class="material-symbols-outlined">check_circle</span> Social engineering testing</li>
+                                        <li><span class="material-symbols-outlined">check_circle</span> Physical security testing</li>
+                                        <li><span class="material-symbols-outlined">check_circle</span> Compliance framework mapping</li>
+                                        <li><span class="material-symbols-outlined">check_circle</span> Ongoing security consultation</li>
+                                        <li><span class="material-symbols-outlined">check_circle</span> 24/7 emergency support</li>
+                                    </ul>
+                                </div>
+                                <div class="pricing-card right">
+                                    <span class="badge enterprise"><img src="assets/images/enterprise.svg" alt=""> ENTERPRISE</span>
+                                    <h2>Contact</h2>
+                                    <p class="desc">For Pricing</p>
+                                    <button class="btn light">Sign Up</button>
+                                </div>
+                            </div>
+
+                            <!-- ENTERPRISE -->
+
+
+                            <!-- COMPLETE SECURITY -->
+                            <div class="pricing-card tall">
+                                <span class="badge best"><img src="assets/images/best-value.svg" alt=""> BEST VALUE</span>
+                                <h2>Complete Security Assessment</h2>
+                                <p class="desc">Full-scale assessment including dark web monitoring</p>
+
+                                <h4>Contact / for pricing</h4>
+                                <button class="btn dark">Sign Up</button>
+
+                                <ul>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Complete vulnerability scan</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Simulated phishing campaign</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Dark web monitoring</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Advanced threat intelligence</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Compliance reporting</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> 90-day retest eligibility</li>
+                                    <li><span class="material-symbols-outlined">check_circle</span> Dedicated security consultant</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </section>
+
+            <section id="settingPanel" class="panel">
+                <div class="card settingPanelArea" style="padding:14px">
+                    <h2>My Profile</h2>
+                    <div class="profileSetting">
+                        <form action="#">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="username"><span class="material-icons">person</span> Username</label>
+                                    <input type="text" id="username" placeholder="Username">
+                                     <span class="helpText">Username cannot be changed</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email"><span class="material-icons">mail</span> Email Address <span class="importantMark">*</span></label>
+                                    <input type="email" id="email" placeholder="Enter email address">
+                                     <span class="helpText">Used for account notifications and login</span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fullName"><span class="material-symbols-outlined">id_card</span> Full Name <span class="importantMark"></span></label>
+                                    <input type="text" id="fullName" placeholder="Enter full name">
+                                     <span class="helpText">Your display name for reports and communications</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="PhoneNumber"><span class="material-icons">call</span> Phone Number </label>
+                                    <input type="number" id="PhoneNumber" placeholder="Enter Phone number">
+                                     <span class="helpText">Optional: For important security notifications</span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group address-form-group">
+                                    <label for="Address"><span class="material-icons">location_on</span> Address</label>
+                                    <textarea name="Address" id="Address" placeholder="Enter your address"></textarea>
+                                     <span class="helpText">Optional: Your business or mailing address</span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="mspi">
+                                    <div class="mspi-header">
+                                        <h3><span class="material-icons">apartment</span> Managed Service Provider Information</h3>
+                                    </div>
+                                    <div class="mspi-content">
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="mspCompany"><span class="material-icons">apartment</span> MSP Company Name</label>
+                                                <input type="text" id="mspCompany" placeholder="Enter MSP Company Name">
+                                                 <span class="helpText">Optional: Name of your managed service provider</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mspLogo"><span class="material-icons">image</span> MSP Logo</label>
+                                                <div class="uploadLogo">
+                                                    <input type="file" id="mspLogo">
+                                                    <img src="" alt="" id="mspLogoPreview">
+                                                </div>
+                                                <span class="helpText">Optional: Upload your MSP logo (PNG, JPG, GIF)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accountInfo">
+                                    <div class="accountInfo-header">
+                                        <h3><span class="material-icons">info</span> Account Information</h3>
+                                    </div>
+                                    <div class="accountInfoContent">
+                                        <div class="group">
+                                            <span class="label">Member Since</span>
+                                            <p class="memberStart">July 06, 2025</p>
+                                        </div>
+                                         <div class="group">
+                                            <span class="label">Last login</span>
+                                            <p class="lastLoginInfo">January 10, 2026 at 11:34 AM</p>
+                                        </div>
+                                         <div class="group">
+                                            <span class="label">Account type</span>
+                                            <p class="accountType">User</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="securitySetting">
+                                    <div class="securitySetting-header">
+                                        <h3><span class="material-icons">shield</span> Security Settings</h3>
+                                    </div>
+                                    <div class="securitySettingContent">
+                                         <div class="group">
+                                            <span class="label">Two-Factor Authentication</span>
+                                            <p class="securityStatus"><span class="material-icons">warning</span> Disabled</p>
+                                        </div>
+                                        <div class="group">
+                                            <button class="twoStepBtn"><span class="material-icons">shield</span>Enable 2FA</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row btnArea">
+                                <button class="backToDashboard"><span class="material-icons">arrow_back</span> Back to Dashboard</button>
+                                <button type="submit" class="saveInfoBtn"><span class="material-icons">save</span> Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+
+
+    <!-- ================= AI PANEL ================= -->
+    <div class="new-sidebar-panel ai-panel" id="aiPanel">
+        <aside class="ai-sidebar" id="ai_sidebar">
+            <div class="top">
+                <div class="ai-header">
+                    <div class="inner-header-top">
+                        <div class="brand">
+                            <div class="mark"><img src="assets/images/site-logo.png" alt=""></div>
+                            <div class="title">M.tech</div>
+                            <div class="ai-tag"><img src="assets/images/ai-Tag.png" alt=""></div>
+                        </div>
+                        <div class="sidebar-collapse-area">
+                            <button id="aiToggleSidebar" class="ai-collapse-toggle" aria-label="Toggle ai-sidebar">
+                                <i id="aiCollapseIcon" class="ai-chev"><img src="assets/images/sidebar.left.svg"
+                                        alt=""></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="closeAi"><img src="assets/images/arrow-back-button.svg" alt=""> <span>Back To
+                            Porta;</span></button>
+                </div>
+
+
+
+                <div class="inner-chat-list">
+                    <h5>Chats</h5>
+                    <div class="new-chat" id="newChat">New Chat</div>
+                    <div class="chat-list" id="chatList"></div>
+                </div>
+            </div>
+
+            <div class="bottom ai-sidebar-bottom">
+                <div class="footer-links">
+                    <a class="item nav-item pricingMenu"><img src="assets/images/attach_money.svg" alt="">
+                        <p>Pricing Billing</p>
+                    </a>
+                    <a class="item nav-item settingMenu"><img src="assets/images/settings.svg" alt="">
+                        <p>Setting</p>
+                    </a>
+                    <a class="item"><img src="assets/images/arrow.forward.svg" alt="">
+                        <p>Logout</p>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <section class="ai-chat">
+            <header class="header">
+                <div class="title">
+                    <h1 id="pageTitle"> AI Agent Support</h1>
+                    <span class="breadcrumbs">Home / <span class="current-page">Ai Agent</span></span>
+                </div>
+                <div class="user">
+                    <div class="avatar">
+                        <img src="assets/images/user-avatar.jpg" alt="avatar">
+                    </div>
+                    <div class="user-info">
+                        <h3>Welcome, Mitch 👋</h3>
+                        <span>Today you are in Canada</span>
+                    </div>
+                </div>
+            </header>
+            <div class="chat-messages" id="messages"></div>
+            <!-- AI selected preview card -->
+            <div id="aiSelectedCard"></div>
+
+            <div class="inner-ai-chat">
+                <!-- ===== DEFAULT PROMPTS ===== -->
+                <div class="ai-promt-area">
+                    <div class="ai-prompts" id="aiPrompts">
+                        <div class="brand">
+                            <div class="mark"><img src="assets/images/site-logo.png" alt=""></div>
+                            <div class="title">M.tech</div>
+                            <div class="ai-tag"><img src="assets/images/ai-Tag.png" alt=""></div>
+                        </div>
+                        <div class="inner-prompt">
+                            <div class="column">
+                                <div class="inner-prompt-header">
+                                    <img src="assets/images/Chats.svg" alt="">
+                                    <h5>Use Cases</h5>
+                                </div>
+                                <div class="inner-prompt-card">
+                                    <div class="prompt-card">Analyze vulnerabilities from my last scan</div>
+                                    <div class="prompt-card">Summarize all High and Critical issues</div>
+                                    <div class="prompt-card">Explain this CVE in simple terms</div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="inner-prompt-header">
+                                    <img src="assets/images/Star.svg" alt="">
+                                    <h5>What It Can Do</h5>
+                                </div>
+                                <div class="inner-prompt-card">
+                                    <div class="prompt-card">Analyze vulnerabilities from my last scan</div>
+                                    <div class="prompt-card">Summarize all High and Critical issues</div>
+                                    <div class="prompt-card">Explain this CVE in simple terms</div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="inner-prompt-header">
+                                    <img src="assets/images/Icon (2).svg" alt="">
+                                    <h5>Use Cases</h5>
+                                </div>
+                                <div class="inner-prompt-card">
+                                    <div class="prompt-card">Analyze vulnerabilities from my last scan</div>
+                                    <div class="prompt-card">Summarize all High and Critical issues</div>
+                                    <div class="prompt-card">Explain this CVE in simple terms</div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="ai-prompts-bottom">
+                            <div class="inner-ai-prompt-bottom">
+                                <img src="assets/images/wand_stars.svg" alt="">
+                                <span>Share your Scan to know more about your specific vulnerabilities for
+                                    detailed,
+                                    personalized analysis and recommendations.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== INPUT and Popup ===== -->
+                <div class="propmtInputAndPopup">
+                    <div class="recent_scan_popup">
+                        <div class="inner_scan_popup">
+                            <div class="scan_popup_top">
+                                <div class="recent ai_recent_scan">
+                                    <div class="recent-head">
+                                        <div class="recent-title">
+                                            <h3>Recent Scans</h3>
+                                        </div>
+                                        <div class="btn-area">
+                                            <button class="recent-scan-btn" id="popuNewScanBtn">New Scan <img
+                                                    src="assets/images/Trailing icon.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="scan_popup_body">
+                                <!-- PANELS -->
+                                <div class="scan-panels">
+                                    <table class="popup-scan-item-table">
+                                        <tbody class="recent_scan_table">
+                                            <tr class="popup_scan_item">
+                                                <td>
+                                                    <div class="scan-item" data-level="critical">
+                                                        <div class="left">
+                                                            <img src="assets/images/scan-logo.svg" alt=""
+                                                                class="scan_site_logo">
+                                                            <h4 class="scan-site-name">Branders.design</h4>
+                                                            <p class="scan-status scan-critical">Critical</p>
+                                                            <span class="scan-date">2025-10-10 12:20</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="popup_scan_item">
+                                                <td>
+                                                    <div class="scan-item" data-level="low">
+                                                        <div class="left">
+                                                            <img src="assets/images/scan-logo2.svg" alt=""
+                                                                class="scan_site_logo">
+                                                            <h4 class="scan-site-name">Example.com</h4>
+                                                            <p class="scan-status scan-low">Low</p>
+                                                            <span class="scan-date">2025-12-15 09:10</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <button class="icon-btn" id="scanPopupOpenBtn"><span
+                                class="material-icons">wifi_tethering</span></button>
+                        <input id="ai-prompt-input" placeholder="Type message">
+                        <button class="send-btn" id="send"> <img src="assets/images/message-send-icon.svg"
+                                alt=""></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
