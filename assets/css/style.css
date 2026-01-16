@@ -73,8 +73,6 @@ a {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    padding: 0 20px;
-    background: #111827;
 }
 
 .accordion-content p {
@@ -2554,4 +2552,221 @@ button.twoStepBtn:hover {
     font-size: 20px;
 }
 
-/* Profile setting close */
+/* Profile setting close *********************************************/
+
+/*  Api Gateway page tab switching start*******************************/
+
+/* MAIN WRAPPER */
+.api-gateway .api-gateway {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+}
+
+/* PANELS */
+.api-gateway .left-panel,
+.api-gateway .right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CARDS */
+.api-gateway .card {
+  background: #0a1128;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+/* LEFT */
+.api-gateway .info-list li {
+  list-style: none;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.api-gateway .info-list span {
+  color: #7aa2f7;
+}
+
+.api-gateway .status.active {
+  color: #4ade80;
+}
+
+.api-gateway .warning {
+  border: 1px solid #f59e0b;
+  background: rgba(245, 158, 11, 0.08);
+}
+
+/* ANALYSIS */
+.api-gateway .analysis-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.api-gateway .badges span {
+  background: #0f172a;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+/* TABS */
+.api-gateway .tabs {
+  display: flex;
+  border-bottom: 1px solid #1e293b;
+  margin-bottom: 18px;
+}
+
+.api-gateway .tab {
+  background: none;
+  border: none;
+  padding: 12px 18px;
+  cursor: pointer;
+  color: #94a3b8;
+}
+
+.api-gateway .tab.active {
+  color: #38bdf8;
+  border-bottom: 2px solid #38bdf8;
+}
+
+/* CONTENT */
+.api-gateway .tab-content {
+  display: none;
+}
+
+.api-gateway .tab-content.active {
+  display: block;
+}
+
+/* TABLE */
+.api-gateway table {.api-gateway 
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.api-gateway th, td {
+  padding: 14px;
+  border-bottom: 1px solid #1e293b;
+  font-size: 14px;
+}
+
+.api-gateway th {
+  color: #94a3b8;
+}
+
+.api-gateway .pill {
+  background: #0ea5e9;
+  color: #001018;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+/*  Api Gateway page tab switching close*******************************/
+
+/* Api gateway view result start************************************ */
+.inner-api-item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ROW */
+.api-gateway-item {
+  display: grid;
+  grid-template-columns: 220px 140px 180px 1fr 160px 120px;
+  align-items: center;
+  background: linear-gradient(180deg, #0a1128, #060c1f);
+  padding: 16px 18px;
+  border: 1px solid #0f172a;
+}
+
+/* COLUMNS */
+.api-gateway-item .col {
+  font-size: 13px;
+  color: #cbd5f5;
+}
+
+.api-gateway-item .hostname {
+  font-weight: 600;
+}
+
+.api-gateway-item .ip,
+.api-gateway-item .geo,
+.api-gateway-item .date {
+  color: #94a3b8;
+}
+
+/* TAGS */
+.api-gateway-item .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+.api-gateway-item .tag {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 14px;
+  white-space: nowrap;
+}
+
+.api-gateway-item .tag.critical {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.api-gateway-item .tag.risk {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.api-gateway-item .tag.blue {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+/* BUTTON */
+.api-gateway-item .action {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+}
+.api-gateway-item .action .btn {
+  background: transparent;
+  border: 1px solid #1e293b;
+  color: #FFFFFF80;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.api-gateway-item .action .btn .material-icons{
+    font-size: 18px;
+
+}
+.api-gateway-item .action .mapBtn{
+      padding: 8px;
+}
+
+.api-gateway-item .action .btn:hover {
+  background: #0f172a;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Api gateway view result Close************************************ */

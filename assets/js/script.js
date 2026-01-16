@@ -1093,3 +1093,71 @@ document.querySelectorAll('.settingMenu').forEach(menu => {
   });
 });
 
+// Api Gateway page tab switching start***********************************************
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+    tab.classList.add('active');
+    document.getElementById(target).classList.add('active');
+  });
+});
+
+// Api Gateway page tab switching close***********************************************
+
+// Api gateway view result logic start**********************************************
+document.addEventListener('DOMContentLoaded', () => {
+
+  document.querySelectorAll('.results-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const panelId = btn.getAttribute('data-panel');
+
+      // Close all panels (same behavior as others)
+      document.querySelectorAll('.panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+
+      // Open API Gateway panel
+      const targetPanel = document.getElementById(panelId);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+    });
+  });
+
+});
+
+
+const assetPanel = document.querySelector('.asset-panel');
+
+/* Close side panels when clicking outside */
+document.addEventListener('click', () => {
+  let anyClosed = false;
+
+  document.querySelectorAll('.side-panel').forEach(panel => {
+    if (panel.classList.contains('active')) {
+      panel.classList.remove('active');
+      anyClosed = true;
+    }
+  });
+
+  // 👉 Activate asset panel after side panel closes
+  if (anyClosed && assetPanel) {
+    assetPanel.classList.add('active');
+  }
+});
+
+/* Prevent closing when clicking inside side panel */
+document.querySelectorAll('.side-panel').forEach(panel => {
+  panel.addEventListener('click', e => e.stopPropagation());
+});
+
+// Api gateway view result logic close**********************************************
+
+
