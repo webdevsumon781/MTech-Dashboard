@@ -54,7 +54,7 @@
                                 <div class="icon"><span class="material-icons">grid_view</span></div>
                                 <div class="label">Dashboard</div>
                             </div>
-                            <div class="nav-item" data-panel="assetsPanel">
+                            <div class="nav-item asset-tab" data-panel="assetsPanel">
                                 <div class="icon"><span class="material-icons">dns</span></div>
                                 <div class="label">Asset Management</div>
                             </div>
@@ -62,7 +62,7 @@
                                 <div class="icon"><span class="material-icons">wifi_tethering</span></div>
                                 <div class="label">Scans</div>
                             </div>
-                            <div class="nav-item" id="openReportPanel">
+                            <div class="nav-item report-tab" id="openReportPanel" data-panel="reportPanel">
                                 <div class="icon"><span class="material-symbols-outlined">draft</span></div>
                                 <div class="label">Custom Reports</div>
                             </div>
@@ -120,15 +120,36 @@
             <header class="header">
                 <div class="title">
                     <h1 id="pageTitle">Vulnerability Overview</h1>
-                    <span class="breadcrumbs">Home / <span class="current-page" id="currentPage">Reports</span></span>
+                    <nav class="breadcrumb"><span id="breadcrumbHome">Home</span><span class="sep"> </span><span
+                            id="breadcrumbSection"></span><span class="sep"> / </span><span id="currentPage"></span>
+                    </nav>
+
                 </div>
-                <div class="user">
-                    <div class="avatar">
-                        <img src="assets/images/user-avatar.jpg" alt="avatar">
+                <div class="inner-user">
+                    <div class="user">
+                        <div class="avatar">
+                            <img src="assets/images/user-avatar.jpg" alt="avatar">
+                        </div>
+                        <div class="user-info">
+                            <h3>Welcome, Mitch 👋</h3>
+                            <span>Today you are in Canada</span>
+                        </div>
                     </div>
-                    <div class="user-info">
-                        <h3>Welcome, Mitch 👋</h3>
-                        <span>Today you are in Canada</span>
+                    <div class="user-panel">
+                        <ul>
+                            <li class="user-panel-profile nav-item"><span
+                                    class="material-symbols-outlined">account_circle</span><span>Profile</span></li>
+                            <li class="user-panel-notification nav-item" data-panel="notificationPanel"><span
+                                    class="material-symbols-outlined">circle_notifications</span><span>Notification</span>
+                            </li>
+                            <li class="user-panel-jira-setting nav-item"><span
+                                    class="material-symbols-outlined">settings</span><span>Jira Setting</span></li>
+                            <li class="user-panel-scan-history  nav-item"><span
+                                    class="material-symbols-outlined">history</span><span>Scan History</span></li>
+                            <li class="user-panel-logout nav-item"><span
+                                    class="material-symbols-outlined">logout</span><span>Logout</span></li>
+
+                        </ul>
                     </div>
                 </div>
             </header>
@@ -718,7 +739,7 @@
 
                                             <!-- Api item -->
                                             <div class="api-gateway-item">
-                                                <div class="col hostname">api-gateway.dexpose.io</div>
+                                                <div class="col hostname">api-gateway2.dexpose.io</div>
                                                 <div class="col ip">104.26.12.117</div>
                                                 <div class="col geo">40.7357, -74.1724</div>
 
@@ -1529,21 +1550,6 @@
                 </aside>
 
                 <section class="report-content-area">
-                    <header class="header">
-                        <div class="title">
-                            <h1 id="pageTitle"> Build Custom Report</h1>
-                            <span class="breadcrumbs">Home / <span class="current-page">Reports</span></span>
-                        </div>
-                        <div class="user">
-                            <div class="avatar">
-                                <img src="assets/images/user-avatar.jpg" alt="avatar">
-                            </div>
-                            <div class="user-info">
-                                <h3>Welcome, Mitch 👋</h3>
-                                <span>Today you are in Canada</span>
-                            </div>
-                        </div>
-                    </header>
                     <div class="report-content" id="rc_content">
                         <!-- File genarate area start -->
                         <form class="form-container" id="reportForm">
@@ -1606,23 +1612,23 @@
 
 
 
-            <section id="threatPanel" class="panel">
+            <!-- <section id="threatPanel" class="panel">
                 <div class="card" style="padding:14px">
                     <h3>Threat Intelligence</h3>
                 </div>
-            </section>
+            </section> -->
 
-            <section id="brandPanel" class="panel">
+            <!-- <section id="brandPanel" class="panel">
                 <div class="card" style="padding:14px">
                     <h3>Brand Protection</h3>
                 </div>
-            </section>
+            </section> -->
 
-            <section id="compliancePanel" class="panel">
+            <!-- <section id="compliancePanel" class="panel">
                 <div class="card" style="padding:14px">
                     <h3>Compliance</h3>
                 </div>
-            </section>
+            </section> -->
 
             <section id="pricingPanel" class="panel">
                 <div class="card" style="padding:14px">
@@ -1897,6 +1903,36 @@
                     </div>
                 </div>
             </section>
+
+            <section id="notificationPanel" class="panel">
+                <div class="card" style="padding:14px">
+                    <div class="inner-notice">
+                        <h3 class="notice-heading"><span class="material-symbols-outlined">cell_tower</span> Active
+                            Notifications</h3>
+                        <div class="active-notification">
+                            <ul>
+                                <li class="notification-item">Notice</li>
+                                <li class="notification-item">Notice</li>
+                            </ul>
+                        </div>
+                        <div class="no-notification">
+                            <div class="icon-box">
+                                <span class="material-icons">check_circle</span>
+                                <h3>No Active Notificaitons</h3>
+                                <p>You're all caught up! All notifications have been dismissed or have expired.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <p class="noticeFooterText">MTECH Attack Surface Management © 2025</p>
+            </section>
+
+            <section id="jiraSettingPanel" class="panel">
+                <div class="card" style="padding:14px">
+                    <h3>Jira Setting</h3>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -1949,21 +1985,7 @@
         </aside>
 
         <section class="ai-chat">
-            <header class="header">
-                <div class="title">
-                    <h1 id="pageTitle"> AI Agent Support</h1>
-                    <span class="breadcrumbs">Home / <span class="current-page">Ai Agent</span></span>
-                </div>
-                <div class="user">
-                    <div class="avatar">
-                        <img src="assets/images/user-avatar.jpg" alt="avatar">
-                    </div>
-                    <div class="user-info">
-                        <h3>Welcome, Mitch 👋</h3>
-                        <span>Today you are in Canada</span>
-                    </div>
-                </div>
-            </header>
+           
             <div class="chat-messages" id="messages"></div>
             <!-- AI selected preview card -->
             <div id="aiSelectedCard"></div>

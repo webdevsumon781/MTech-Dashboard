@@ -39,59 +39,98 @@ const scanBtn = document.querySelector(".sidebar-new-scan");
 const recentScanBtn = document.querySelector(".recent-scan-btn");
 
 const navItems = document.querySelectorAll('.nav-item');
+const resultBtns = document.querySelectorAll('.results-btn');
 const scanTab = document.querySelector(".sidebar-scan-tab");
 const dashboardTab = document.querySelector(".dashboard-tab");
 const dashboardOverview = document.querySelector("#dashboardPanel");
 const panels = document.querySelectorAll('.panel');
 const pageTitleEl = document.getElementById('pageTitle');
 
+
 const titleMap = {
   dashboardPanel: 'Vulnerability Overview',
   assetsPanel: 'Asset Management',
   scansPanel: 'Vulnerability Scanner',
-  reportsPanel: 'Custom Reports',
+  reportPanel: 'Custom Reports',
   threatPanel: 'Threat Intelligence',
   brandPanel: 'Brand Protection',
   compliancePanel: 'Compliance',
   aiAgent: 'AI Agent Support',
   pricingPanel: 'Pricing & Billing',
   settingPanel: 'Profile Setting',
-  apiGatewayPanel: 'Api Gateway'
+  notificationPanel: 'My Notification'
 };
 
+function activatePanel(panelId, dynamicTitle = null, breadcrumbLabel = null) {
+  panels.forEach(p => {
+    p.classList.toggle('active', p.id === panelId);
+  });
 
-/* =======================
-   BREADCRUMB HELPER
-======================= */
-function updateBreadcrumb(panelId) {
-  const breadcrumb = document.getElementById('currentPage');
-  if (!breadcrumb) return;
-  breadcrumb.textContent = titleMap[panelId] || 'Dashboard';
+  const title = dynamicTitle || titleMap[panelId] || 'M.tech Dashboard';
+
+  pageTitleEl.textContent = title;
+  document.title = title + ' — M.tech';
+
+  updateBreadcrumb(panelId, breadcrumbLabel || title);
 }
+
 
 
 navItems.forEach(item => {
   item.addEventListener('click', () => {
     navItems.forEach(i => i.classList.remove('active'));
     item.classList.add('active');
-    const panelId = item.getAttribute('data-panel');
 
-    panels.forEach(p => {
-      if (p.id === panelId) {
-        p.classList.add('active');
-      } else {
-        p.classList.remove('active');
-      }
-    });
-
-    const newTitle = titleMap[panelId] || 'M.tech Dashboard';
-    pageTitleEl.textContent = newTitle;
-    document.title = newTitle + ' — M.tech';
-
-    // ✅ ADD THIS LINE
-    updateBreadcrumb(panelId);
+    activatePanel(item.dataset.panel);
   });
 });
+
+document.querySelectorAll('.results-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+
+    const panelId = btn.dataset.panel;
+
+    const hostname = btn
+      .closest('.api-gateway-item')
+      ?.querySelector('.hostname')
+      ?.textContent.trim();
+
+    activatePanel(panelId);
+
+    pageTitleEl.textContent = hostname;
+    document.title = hostname + ' — M.tech';
+
+    updateBreadcrumb(panelId, hostname);
+  });
+});
+
+/* =======================
+   BREADCRUMB HELPER
+======================= */
+function updateBreadcrumb(panelId, dynamicLabel = null) {
+  const home = document.getElementById('breadcrumbHome');
+  const section = document.getElementById('breadcrumbSection');
+  const current = document.getElementById('currentPage');
+
+  if (!home || !current) return;
+
+  home.textContent = 'Home';
+
+  // default section mapping
+  let sectionLabel = '';
+  let pageLabel = dynamicLabel || titleMap[panelId] || 'Dashboard';
+
+  if (panelId === 'apiGatewayPanel') {
+    sectionLabel = '/ Asset Management';
+  }
+
+  section.textContent = sectionLabel;
+  current.textContent = pageLabel;
+
+  // hide section if not needed
+  section.style.display = sectionLabel ? 'inline' : 'none';
+}
+
 
 
 
@@ -122,22 +161,6 @@ if (recentScanBtn) {
 }
 
 
-function activatePanel(panelId) {
-  // sidebar active
-  navItems.forEach(i => i.classList.remove('active'));
-  const nav = document.querySelector(`.nav-item[data-panel="${panelId}"]`);
-  if (nav) nav.classList.add('active');
-
-  // panels
-  panels.forEach(p => {
-    p.classList.toggle('active', p.id === panelId);
-  });
-
-  // title
-  const newTitle = titleMap[panelId] || 'M.tech Dashboard';
-  pageTitleEl.textContent = newTitle;
-  document.title = newTitle + ' — M.tech';
-}
 
 
 /*******************************
@@ -464,6 +487,7 @@ reportToggleSidebar.addEventListener('click', () => {
 const reportPanel = document.getElementById('reportPanel');
 const openReportPanel = document.getElementById('openReportPanel');
 const closeReport = document.getElementById('closeReport');
+const reportTab = document.querySelector('.report-tab');
 
 /* ---------- PANEL OPEN / CLOSE ---------- */
 openReportPanel && (openReportPanel.onclick = () => reportPanel.classList.add('open'));
@@ -471,6 +495,8 @@ openReportPanel && (openReportPanel.onclick = () => reportPanel.classList.add('o
 closeReport.onclick = () => {
   reportPanel.classList.remove('open');
   activatePanel('dashboardPanel');
+  dashboardTab.classList.add("active");
+  reportTab.classList.remove("active")
 };
 
 // File genarate form here****************
@@ -836,6 +862,8 @@ openAi && (openAi.onclick = () => aiPanel.classList.add('open'));
 closeAi.onclick = () => {
   aiPanel.classList.remove('open');
   activatePanel('dashboardPanel');
+  openAi.classList.remove("active");
+  dashboardTab.classList.add("active")
 };
 
 closeAiToScan.onclick = () => {
@@ -846,6 +874,7 @@ backToDashboard.onclick = () => {
   aiPanel.classList.remove('open');
   activatePanel('dashboardPanel');
 };
+
 
 
 /* ---------- CREATE NEW CHAT ---------- */
@@ -1162,3 +1191,43 @@ document.querySelectorAll('.side-panel').forEach(panel => {
 // Api gateway view result logic close**********************************************
 
 
+// Header user menu logic start ************************************************
+const profileMenu = document.querySelector(".user-panel-profile");
+const settingPanel = document.querySelector("#settingPanel");
+
+profileMenu.onclick = () => {
+  reportPanel.classList.remove('open');
+  activatePanel('settingPanel');
+  aiPanel.classList.remove("open");
+  settingPanel.classList.add("active")
+};
+
+const userPanelNotification = document.querySelector(".user-panel-notification");
+const notificationPanel = document.querySelector("#notificationPanel");
+
+userPanelNotification.onclick = () => {
+  reportPanel.classList.remove('open');
+  activatePanel('notificationPanel');
+  aiPanel.classList.remove("open");
+  notificationPanel.classList.add("active")
+};
+
+const userJiraSetting = document.querySelector(".user-panel-jira-setting");
+const jiraSettingPanel = document.querySelector("#jiraSettingPanel");
+
+userJiraSetting.onclick = () => {
+  reportPanel.classList.remove('open');
+  activatePanel('jiraSettingPanel');
+  aiPanel.classList.remove("open");
+  userJiraSetting.classList.add("active")
+};
+
+const userScanHistory = document.querySelector(".user-panel-scan-history");
+userScanHistory.onclick = () => {
+  reportPanel.classList.remove('open');
+  activatePanel('dashboardPanel');
+  aiPanel.classList.remove("open");
+  userScanHistory.classList.add("active")
+};
+
+// Header user menu logic close ***********************************************
