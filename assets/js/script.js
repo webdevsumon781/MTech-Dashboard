@@ -55,7 +55,8 @@ const titleMap = {
   compliancePanel: 'Compliance',
   aiAgent: 'AI Agent Support',
   pricingPanel: 'Pricing & Billing',
-  settingPanel: 'Profile Setting'
+  settingPanel: 'Profile Setting',
+  apiGatewayPanel: 'Api Gateway'
 };
 
 

@@ -962,20 +962,27 @@
                     <!-- LEFT SIDE -->
                     <div class="left-panel">
                         <div class="card">
-                            <h3>Asset Overview</h3>
+                            <h3><span class="material-symbols-outlined">vital_signs</span></h3>
                             <ul class="info-list">
-                                <li><span>Hostname:</span> api-gateway.dexpose.io</li>
-                                <li><span>IP Address:</span> 104.26.12.117</li>
-                                <li><span>Domain:</span> dexpose.io</li>
-                                <li><span>Discovered:</span> 2025-10-11 14:02</li>
-                                <li><span>Last Updated:</span> 2025-10-11 14:03</li>
-                                <li><span>Status:</span> <b class="status active">Active</b></li>
+                                <li><span class="list-title">Hostname:</span> <span>api-gateway.dexpose.io</span></li>
+                                <li><span class="list-title">IP Address:</span> <span>104.26.12.117</span> </li>
+                                <li><span class="list-title">Domain:</span> <span>dexpose.io</span></li>
+                                <li><span class="list-title">Discovered:</span> <span>2025-10-11 14:02</span></li>
+                                <li><span class="list-title">Last Updated:</span> <span>2025-10-11 14:03</span></li>
+                                <li class="critical"><span class="list-title">Critical Score:</span> <span
+                                        class="score-value">Active</span>
+                                </li>
+                                <li><span class="list-title">Status:</span> <span class="status active">Active</span>
+                                </li>
                             </ul>
                         </div>
 
-                        <div class="card warning">
-                            <p>⚠ High vulnerability count (39)</p>
-                            <p>⚠ XSS vulnerability detected</p>
+                        <div class="card warning-card">
+                            <h3 class="card-title"><span class="material-symbols-outlined">warning</span></h3>
+                            <p class="warning-item"><span class="material-symbols-outlined">warning</span> High
+                                vulnerability count (39)</p>
+                            <p class="warning-item"><span class="material-symbols-outlined">warning</span> XSS
+                                vulnerability detected</p>
                         </div>
 
                     </div>
@@ -988,8 +995,12 @@
                             <div class="analysis-header">
                                 <h2>Analysis</h2>
                                 <div class="badges">
-                                    <span>🌐 Internet-facing</span>
-                                    <span>🔒 TLS observed</span>
+                                    <p><span class="material-symbols-outlined">
+                                            language
+                                        </span> Internet-facing</p>
+                                    <p><span class="material-symbols-outlined">
+                                            lock
+                                        </span> TLS observed</p>
                                 </div>
                             </div>
 
@@ -1004,6 +1015,7 @@
 
                             <!-- Tab Content -->
                             <div class="tab-content active" id="services">
+                                <h3 class="table-heading">Detected Services</h3>
                                 <table>
                                     <thead>
                                         <tr>
